@@ -4,7 +4,7 @@ import { BASE_URL } from "./App";
 import useAutosave from "./autosave";
 
 function SaveTask({ task, onTaskSave }) {
-  const [tempTask, updateField, saveEntity] = useAutosave(task, {
+  const [tempTask, updateField, saveTask] = useAutosave(task, {
     URL: BASE_URL,
     entityName: "tasks"
   });
@@ -14,7 +14,7 @@ function SaveTask({ task, onTaskSave }) {
   }
   async function handleSave(e) {
     e.preventDefault();
-    await saveEntity(tempTask);
+    await saveTask(tempTask);
     onTaskSave(tempTask);
   }
 
